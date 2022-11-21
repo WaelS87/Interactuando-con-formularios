@@ -13,7 +13,7 @@ const moviesController = {
   list: (req, res) => {
     db.Movie.findAll({
       include: ["genre"],
-      order: ["name"],
+  
     }).then((movies) => {
       res.render("moviesList.ejs", { movies });
     });
@@ -46,9 +46,7 @@ const moviesController = {
   },
   //Aqui dispongo las rutas para trabajar con el CRUD
   add: function (req, res) {
-    let promGenres = Genres.findAll({
-        order:['name']
-    });
+    let promGenres = Genres.findAll();
     let promActors = Actors.findAll();
 
     Promise.all([promGenres, promActors])

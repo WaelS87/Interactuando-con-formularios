@@ -19,15 +19,15 @@
             <ul class="errores"></ul>
             <form class="form" action="/movies/create" method="POST" id="formAddPeli">
                 <label for="title">Titulo* </label>
-                <div><input autofocus type="text" name="title" id="title" ><p id="msgTitle" class="is-valid"></p></div>
+                <div><input autofocus type="text" name="title" id="title" ><p id="msgTitle" ></p></div>
                 <label for="rating">Calificación* </label>
-                <div><input type="number" name="rating" id="rating" placeholder="Indicar valor entre 0 y 10"><p id="msgRat" class="is-valid"></p> </div>
+                <div><input type="number" name="rating" id="rating" placeholder="Indicar valor entre 0 y 10"><p id="msgRat" ></p> </div>
                 <label for="awards">Premios* </label>
-                <div><input type="number" name="awards" id="awards" placeholder="Indicar valor entre 0 y 10"><p id="msgAwa" class="is-valid"></p></div>
+                <div><input type="number" name="awards" id="awards" placeholder="Indicar valor entre 0 y 10"><p id="msgAwa" ></p></div>
                 <label for="release_date">Fecha de creación* </label>
-                <div><input type="date" name="release_date" id="release_date" ><p id="msgRel" class="is-valid"></p></div>
+                <div><input type="date" name="release_date" id="release_date" ><p id="msgRel" ></p></div>
                 <label for="length">Duración* </label>
-                <div><input type="number" name="length" id="length" placeholder="Indicar duración entre 60 y 360 minutos" ><p id="msgLen" class="is-valid"></p><p class="is-valid"></p></div>
+                <div><input type="number" name="length" id="length" placeholder="Indicar duración entre 60 y 360 minutos" ><p id="msgLen" ></p>
                 <label for="genreID">Género* </label>
                 <div>
                     <select name="genre_id" id="genre_id" >
@@ -36,10 +36,11 @@
                         <option value="<%= genre.id %>"><%= genre.name %></option>
                         <% }); %>
                     </select>
-                    <p id="msgGen" class="is-valid"></p>
+                    <p id="msgGen" ></p>
                 </div>
                 <br>
-                <div> <button class="botonAgregar" type="submit" disabled>Agregar</button>
+                <div> <button class="botonAgregar" type="submit" id="submit" disabled>Agregar</button>
+                    <small id="msgSub"></small>
                 
                 <a  class="botonVolver" href="/movies">Listado de Películas</a></div>
             </form>

@@ -9,6 +9,24 @@ window.onload = function(){
     article.classList.add('fondoTransparente');
     formulario.classList.add('fondoCRUD');
 
+    const checkFields = () => {
+        let error = false;
+        for (let i = 0; i < elements.length - 1; i++) {
+          
+          if(!elements[i].value || elements[i].classList.contains('is-invalid')) {
+            error = true
+          
+          }
+         
+        }
+      
+        if(!error){
+          $('submit').disabled = false;
+        }else {
+          $('submit').disabled = true;
+        }
+      }
+
 //------DESDE AQUÍ CONTINÚE CON LAS VALIDACIONES DEL FORMULARIO //
 //-------------------DE REGISTRO DE PELÍCULAS------------------//
 const $ = (element)=> document.getElementById(element)  
@@ -21,7 +39,7 @@ console.log(elements)
 $("title").addEventListener('focus',function(e){
     $("msgTitle").classList.remove("is-invalid")
     $("msgTitle").classList.add("is-valid")
-    $("msgTitle").innerHTML="por favor ingres el titulo del la pilicula"
+    $("msgTitle").innerHTML=null
 })
 $("title").addEventListener('blur',function(e){
     switch(true){
@@ -34,16 +52,19 @@ $("title").addEventListener('blur',function(e){
             $("msgTitle").innerHTML="el minimo 6 caracteres"
             break;_
         default:
+            $("msgTitle").classList.remove("is-invalid")
+            $("msgTitle").classList.add("is-valid")
             $("msgTitle").innerHTML=null
            
             break;
     }
+    checkFields();
    
 })
 $("rating").addEventListener('focus',function(e){
     $("msgRat").classList.remove("is-invalid")
     $("msgRat").classList.add("is-valid")
-    $("msgRat").innerHTML="por favor ingrse el rating del pilicula"
+    $("msgRat").innerHTML=null
 })
 $("rating").addEventListener('blur',function(e){
     switch(true){
@@ -56,22 +77,26 @@ $("rating").addEventListener('blur',function(e){
             $("msgRat").innerHTML="debe imgresar el rating entre 0 a 10"
             break;
         default:
+            $("msgRat").classList.remove("is-invalid")
+            $("msgRat").classList.add("is-valid")
             $("msgRat").innerHTML=null
             break;
     }
-   
+    checkFields()
+ 
 })
+ 
 $("awards").addEventListener('focus',function(e){
     $("msgAwa").classList.remove("is-invalid")
     $("msgAwa").classList.add("is-valid")
-    $("msgAwa").innerHTML="por favor ingrse el awards *"
+    $("msgAwa").innerHTML=null
    
 })
 $("awards").addEventListener('blur',function(e){
     switch (true) {
         case !this.value:
             $("msgAwa").classList.add("is-invalid")
-            $("msgAwa").innerHtml = "debe ingresar numero de awards por fa"
+            $("msgAwa").innerHTML = "debe ingresar numero de awards por fa"
             
             break;
         case this.value < 0 || this.value > 10 :
@@ -80,14 +105,17 @@ $("awards").addEventListener('blur',function(e){
             break;
     
         default:
+            $("msgAwa").classList.remove("is-invalid")
+            $("msgAwa").classList.add("is-valid")
             $("msgAwa").innerHTML = null;
             break;
     }
+    checkFields()
 })
 $("release_date").addEventListener('focus',function(e){
     $("msgRel").classList.remove("is-invalid")
     $("msgRel").classList.add("is-valid")
-    $("msgRel").innerHTML="por favor ingrse la fecha de release *"
+    $("msgRel").innerHTML=null
 })
 $("release_date").addEventListener('blur',function(e){
     switch (true) {
@@ -98,14 +126,17 @@ $("release_date").addEventListener('blur',function(e){
             break;
        
         default:
+            $("msgRel").classList.remove("is-invalid")
+            $("msgRel").classList.add("is-valid")
             $("msgRel").innerHTML=null;
             break;
     }
+    checkFields()
 })
 $("length").addEventListener('focus',function(e){
     $("msgLen").classList.remove("is-invalid")
     $("msgLen").classList.add("is-valid")
-    $("msgLen").innerHTML="por favor ingrse la duracion *"
+    $("msgLen").innerHTML=null
 })
 $("length").addEventListener('blur',function(e){
    switch (true) {
@@ -120,12 +151,15 @@ $("length").addEventListener('blur',function(e){
 
    
     default:
+        $("msgLen").classList.remove("is-invalid")
         $("msgLen").classList.add("is-valid")
         $("msgLen").innerHTML = null
         break;
    }
+   checkFields()
 })
 $("genre_id").addEventListener('focus',function(e){
+    $("msgGen").classList.remove("is-invalid")
     $("msgGen").classList.add("is-valid")
     $("msgGen").innerHTML=null
 })
@@ -139,12 +173,15 @@ $("genre_id").addEventListener('blur',function(e){
     
         default:
             $("msgGen").classList.remove("is-invalid")
+            $("msgGen").classList.add("is-valid")
             $("msgGen").innerHTML=null
             break;
     }
+
+    checkFields()
 })
-
-
-
-
 }
+
+
+
+
