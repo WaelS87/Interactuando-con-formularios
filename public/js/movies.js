@@ -1,17 +1,17 @@
+console.log('conexiooon exitosaaaa!!!!!!!!')
+
+
 
 
 window.onload = function(){
-    let titulo = document.querySelector('.moviesAddTitulo')
-    let formulario = document.querySelector('#formulario');
-    let article = document.querySelector('article');
-    titulo.innerHTML = 'AGREGAR PELÍCULA';
-    titulo.classList.add('titulo');
-    article.classList.add('fondoTransparente');
-    formulario.classList.add('fondoCRUD');
+  
+const $ = (element)=> document.getElementById(element)
+let form =  $('form')
+const elements = form.elements
 
     const checkFields = () => {
         let error = false;
-        for (let i = 0; i < elements.length - 1; i++) {
+        for (let i = 0; i < elements.length -2; i++) {
           
           if(!elements[i].value || elements[i].classList.contains('is-invalid')) {
             error = true
@@ -30,32 +30,27 @@ window.onload = function(){
 
 //------DESDE AQUÍ CONTINÚE CON LAS VALIDACIONES DEL FORMULARIO //
 //-------------------DE REGISTRO DE PELÍCULAS------------------//
-const $ = (element)=> document.getElementById(element)  
-const qs = (element)=> document.querySelector(element)
-
-let formAdd =  $('formAddPeli')
-const elements = formAdd.elements
-console.log(elements)
+  
 
 $("title").addEventListener('focus',function(e){
-    $("msgTitle").classList.remove("is-invalid")
-    $("msgTitle").classList.add("is-valid")
-    $("msgTitle").innerHTML=null
+    $("msgTit").classList.remove("is-invalid")
+    $("msgTit").classList.add("is-valid")
+    $("msgTit").innerHTML=null
 })
 $("title").addEventListener('blur',function(e){
     switch(true){
         case !this.value.trim():
-            $("msgTitle").classList="is-invalid"
-            $("msgTitle").innerHTML="debe ingresar el titulo"
+            $("msgTit").classList="is-invalid"
+            $("msgTit").innerHTML="debe ingresar el titulo"
             break;
         case this.value.trim().length < 6:
-            $("msgTitle").classList="is-invalid"
-            $("msgTitle").innerHTML="el minimo 6 caracteres"
+            $("msgTit").classList="is-invalid"
+            $("msgTit").innerHTML="el minimo 6 caracteres"
             break;_
         default:
-            $("msgTitle").classList.remove("is-invalid")
-            $("msgTitle").classList.add("is-valid")
-            $("msgTitle").innerHTML=null
+            $("msgTit").classList.remove("is-invalid")
+            $("msgTit").classList.add("is-valid")
+            $("msgTit").innerHTML=null
            
             break;
     }
@@ -185,7 +180,3 @@ $('submit').addEventListener('click',function(e){
     alert("La película se guardó satisfactoriamente")
 })
 }
-
-
-
-
